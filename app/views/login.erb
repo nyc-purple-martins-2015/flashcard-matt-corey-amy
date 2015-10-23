@@ -1,0 +1,27 @@
+<% if @errors %>
+  <div>
+    <span>Please fix the following error(s):</span>
+        <ul>
+          <% @errors.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+  </div>
+<% end %>
+
+<div>
+  <h4>Please enter your username and password:</h4>
+</div>
+<div>
+  <form role="form" method="post" action="/login">
+    <div>
+      <label for="username_input">Username: </label>
+      <input id="username_input" name="user[username]" type="text" value="" placeholder="Enter your username">
+    </div>
+    <div>
+      <label for="password_input">Password: </label>
+      <input id="password_input" name="user[password]" type="password" value="" placeholder="Enter your password">
+    </div>
+      <input class="button" type="submit" value="Log in">
+  </form>
+</div>
