@@ -1,0 +1,25 @@
+<div class="header">
+
+<h1> Flashcards </h1>
+
+</div>
+
+<div class="subheader">
+
+
+
+</div>
+
+<p> Your question is: </p>
+
+<p> <%= @card.question %> </p>
+
+<p></p>
+
+<form method="post" action="/card/<%=@card.id%>">
+  <input type= "text" name="response" placeholder="Enter Answer Here">
+  <input type= "submit" class="buttom" value="Submit Answer">
+</form>
+
+
+
