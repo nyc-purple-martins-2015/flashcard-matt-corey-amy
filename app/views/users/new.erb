@@ -1,0 +1,11 @@
+<% if @errors %>
+  <div class="container">
+    <span>Please fix the following error(s):</span>
+        <ul>
+          <% @errors.each do |error| %>
+            <li>- <%= error %></li>
+          <% end %>
+        </ul>
+  </div>
+<% end %>
+
