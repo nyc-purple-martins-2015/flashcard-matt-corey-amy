@@ -3,7 +3,7 @@
     <span>Please fix the following error(s):</span>
         <ul>
           <% @errors.each do |error| %>
-            <li>- <%= error %></li>
+            <li><%= error %></li>
           <% end %>
         </ul>
   </div>
@@ -16,7 +16,7 @@
   <form role="form" method="post" action="/users">
     <div>
       <label for="username_input">Username: </label>
-      <input id="username_input" name="user[name]" type="text" value="" placeholder="Enter new username">
+      <input id="username_input" name="user[username]" type="text" value="" placeholder="Enter new username">
     </div>
     <div>
       <label for="password_input">Password: </label>
