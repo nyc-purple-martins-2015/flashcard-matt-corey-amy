@@ -1,6 +1,7 @@
 get '/card/:id' do
-  @deck = Deck.find_by(params[:id])
   @card = Card.find(params[:id])
+  @deck = Deck.find_by(id: "#{@card.deck_id}")
+  @round = Round.find_by()
   erb :'cards/view_card'
 end
 
