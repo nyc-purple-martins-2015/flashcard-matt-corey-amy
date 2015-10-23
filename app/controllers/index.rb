@@ -1,5 +1,6 @@
 get '/' do
   redirect '/decks'
+end
 
 get '/card/:id' do
   # @deck = Deck.new
