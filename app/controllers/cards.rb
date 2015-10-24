@@ -25,3 +25,34 @@ post '/card/:id' do
 end
 
 
+=begin
+
+I think we need to find or assign a current user or round(using auth_helper method?)
+
+@cards_left = @round.guesses.where(correctness: "false")
+@correct_cards = @round.guesses.where(correctness: "true")
+
+
+  if @card.answer == @answer &&
+    @count + = 1
+    @guess.update_attributes(correctness: true, count: @count)
+      if round_over?
+        redirect to game over page that links to stats?
+      else
+        redirect "/card/#{@round.cards_left.sample.card_id}"
+      end
+  else
+    @count += 1
+    @guess.update_attributes(count: @count)
+    redirect "/card/##{@round.cards_left.sample.card_id}"
+  end
+
+
+
+
+
+
+
+=end
+
+
