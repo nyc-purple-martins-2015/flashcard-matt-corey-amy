@@ -5,7 +5,6 @@ class Round < ActiveRecord::Base
   belongs_to :user
 
   def cards_left
-    card = Card.all
     self.guesses.where(correctness:"false")
   end
 
