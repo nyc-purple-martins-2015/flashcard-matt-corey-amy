@@ -4,7 +4,7 @@ get '/decks' do
 end
 
 get '/decks/:id' do  #it is currently set up so that if you are not logged in, you cannot select a deck
-  if session[:user_id]
+  if login?
     @user_id = session[:user_id]
     @round = Round.create!(user_id: "#{@user_id}", deck_id: params[:id])
     @deck = Deck.find(params[:id])
