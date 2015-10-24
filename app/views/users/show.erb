@@ -4,28 +4,18 @@
 <div>
   <h4>Playing history for <%= @user.username %>:</h4>
 </div>
-<div>
-  <% if @user.rounds.first %>
-    <% @user.round_history.each do |deck_name, rounds| %>
-      <h4><%= deck_name %></h4>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Cards in Deck</th>
-          <th>First Guess Correct</th>
-          <th>Total Guesses</th>
-        </tr>
-        <% rounds.each do |round| %>
-          <tr>
-            <th><%= round.created_at.localtime.strftime("%B %-d, %Y") %> <%= "<a href='" + "/rounds/#{round.id}/card" + "'>continue</a>" if !round.cards_left.empty? %></th>
-            <th><%= round.cards.count %></th>
-            <th><%= round.correct_cards %></th>
-            <th><%= round.total_guesses %></th>
-          </tr>
-        <% end %>
-      </table>
-    <% end %>
-  <% else %>
-    <p>No rounds played yet</p>
-  <% end %>
-</div>
+
+
+<% @decks.each do |deck| %>
+<p>Deck Name : <%= deck.name.upcase %> </p>
+<p> Date Played - <%= deck.rounds.first.created_at.localtime.strftime("%B %-d, %Y") %></p>
+<p> There were <%= deck.cards.count %> cards in this deck.
+<p>You made a total of <%= deck.rounds.first.total_guesses %> guesses during the round. </p>
+
+ <p> You answered <%= deck.rounds.first.incorrect_guesses %> wrong on the first try. </p>
+ <p> **************************************************************</p>
+
+<% end %>
+
+
+
