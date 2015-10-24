@@ -19,13 +19,11 @@ post '/card/:id' do
         erb :'cards/show'
       else
         redirect "card/#{@card.id}/correct"
-        # redirect "/card/#{@round.cards_left.sample.card_id}"
       end
   else
     @count += 1
     @card_guess.update_attributes(count: @count)
     redirect "card/#{@card.id}/incorrect"
-    # redirect "/card/#{@round.cards_left.sample.card_id}"
   end
 end
 

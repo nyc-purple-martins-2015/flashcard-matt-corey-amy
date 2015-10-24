@@ -5,4 +5,15 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def count_rounds
+    self.rounds.count
+  end
+
+  def decks_played
+    @decks = []
+    self.rounds.each do |round|
+      @decks << round.deck
+    end
+    @decks.sort
+  end
 end

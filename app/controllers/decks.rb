@@ -3,7 +3,7 @@ get '/decks' do
   erb :'decks/index'
 end
 
-get '/decks/:id' do  #it is currently set up so that if you are not logged in, you cannot select a deck
+get '/decks/:id' do
   if login?
     @user_id = session[:user_id]
     @round = Round.create!(user_id: "#{@user_id}", deck_id: params[:id])
@@ -14,7 +14,6 @@ get '/decks/:id' do  #it is currently set up so that if you are not logged in, y
     end
     @round.reset_deck
   else
-    #right now I am redirecting to login if you are not a current user
     redirect '/login'
   end
   erb :'decks/show'
