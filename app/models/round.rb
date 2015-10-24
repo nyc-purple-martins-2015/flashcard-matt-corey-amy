@@ -21,7 +21,7 @@ class Round < ActiveRecord::Base
   end
 
   def incorrect_guesses
-    self.guesses.where(correctness: false).count
+    self.guesses.all.where('count >?', 1).count
   end
 
   def total_guesses
