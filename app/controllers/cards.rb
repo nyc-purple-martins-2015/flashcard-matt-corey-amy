@@ -18,13 +18,27 @@ post '/card/:id' do
       if @round.round_over?
         redirect '/'
       else
-        redirect "/card/#{@round.cards_left.sample.card_id}"
+        redirect "card/#{@card.id}/correct"
+        # redirect "/card/#{@round.cards_left.sample.card_id}"
       end
   else
     @count += 1
     @card_guess.update_attributes(count: @count)
-    redirect "/card/#{@round.cards_left.sample.card_id}"
+    redirect "card/#{@card.id}/incorrect"
+    # redirect "/card/#{@round.cards_left.sample.card_id}"
   end
 end
 
+get '/card/:id/correct' do
+  @card = Card.find(params[:id])
+  @deck = Deck.find_by(id: "#{@card.deck_id}")
+  @round = Round.where(deck_id: "#{@deck.id}").last
+  erb :'cards/correct'
+end
 
+get '/card/:id/incorrect' do
+  @card = Card.find(params[:id])
+  @deck = Deck.find_by(id: "#{@card.deck_id}")
+  @round = Round.where(deck_id: "#{@deck.id}").last
+  erb :'cards/incorrect'
+end
