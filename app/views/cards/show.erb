@@ -1,0 +1,10 @@
+<div>
+  <h5>You've completed a round of: <%= @round.deck.name %>.</h5>
+  <h5>You answered a total of <%= @round.deck.cards.count %> questions.</h5>
+  <h5>You submitted a total of <%= @round.total_guesses %> guesses.</h5>
+  <h5>You answered <%= @round.incorrect_guesses %> wrong the first time.</h5>
+
+</div>
+<div>
+  <h5><a href="/decks">Play another game!</a></h5>
+</div>

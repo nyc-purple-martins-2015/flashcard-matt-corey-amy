@@ -19,4 +19,13 @@ class Round < ActiveRecord::Base
   def reset_deck
     self.guesses.update_all(correctness: "false", count: 0)
   end
+
+  def incorrect_guesses
+    self.guesses.where(correctness: false).count
+  end
+
+  def total_guesses
+    self.guesses.sum(:count)
+  end
+
 end
