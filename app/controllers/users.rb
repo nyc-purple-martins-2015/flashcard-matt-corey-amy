@@ -32,3 +32,12 @@ get '/logout' do
   session.clear
   redirect '/'
 end
+
+get '/users/:id' do
+  # if logged_in?
+    @user = User.find_by(id: params[:id])
+    erb :'users/show'
+  # else
+  #   add error page (partial)
+  end
+end
