@@ -16,7 +16,7 @@ post '/card/:id' do
     @count += 1
     @card_guess.update_attributes(correctness: true, count: @count)
       if @round.round_over?
-        redirect '/'
+        erb :'cards/show'
       else
         redirect "card/#{@card.id}/correct"
         # redirect "/card/#{@round.cards_left.sample.card_id}"
