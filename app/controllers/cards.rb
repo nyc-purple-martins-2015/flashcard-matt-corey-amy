@@ -6,9 +6,9 @@ get '/card/:id' do
 end
 
 post '/card/:id' do
-  @next_card = params[:id].to_i + 1 #comment this out
   @card = Card.find(params[:id])
   @deck = Deck.find_by(id: "#{@card.deck_id}")
+  @cards = @deck.cards
   @round = Round.find_by(deck_id: "#{@deck.id}")
   @guess = Guess.create!(card_id: params[:id], round_id: "#{@round.id}")
   @count = @guess.count
@@ -16,11 +16,16 @@ post '/card/:id' do
   if @card.answer == @answer
     @count += 1
     @guess.update_attributes(correctness: true, count: @count)
-    redirect "/card/#{@next_card}" #we need to redirect to random card that has not been correctly answered
+    binding.pry
+      if @round.round_over?
+        redirect '/'
+      else
+        redirect "/card/#{@round.cards_left.sample.card_id}"
+      end
   else
     @count += 1
     @guess.update_attributes(count: @count)
-    redirect "/"
+    redirect "/card/#{@round.cards_left.sample.card_id}"
   end
 end
 
@@ -33,7 +38,7 @@ I think we need to find or assign a current user or round(using auth_helper meth
 @correct_cards = @round.guesses.where(correctness: "true")
 
 
-  if @card.answer == @answer &&
+  if @card.answer == @answer
     @count + = 1
     @guess.update_attributes(correctness: true, count: @count)
       if round_over?

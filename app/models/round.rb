@@ -5,6 +5,7 @@ class Round < ActiveRecord::Base
   belongs_to :user
 
   def cards_left
+    card = Card.all
     self.guesses.where(correctness:"false")
   end
 
@@ -16,4 +17,7 @@ class Round < ActiveRecord::Base
     self.guesses.where(correctness:"false").length == 0
   end
 
+  def reset_deck
+    self.guesses.update_all(correctness: "false", count: 0)
+  end
 end
