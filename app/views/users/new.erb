@@ -1,5 +1,5 @@
 <% if @errors %>
-  <div>
+  <div class="container">
     <span>Please fix the following error(s):</span>
         <ul>
           <% @errors.each do |error| %>
@@ -9,19 +9,16 @@
   </div>
 <% end %>
 
-<div>
-  <h4>Please create your username and password:</h4>
-</div>
-<div>
-  <form role="form" method="post" action="/users">
-    <div>
-      <label for="username_input">Username: </label>
-      <input id="username_input" name="user[username]" type="text" value="" placeholder="Enter new username">
-    </div>
-    <div>
-      <label for="password_input">Password: </label>
-      <input id="password_input" name="user[password]" type="password" value="" placeholder="Enter new password">
-    </div>
-      <input class="button" type="submit" value="Sign up">
+<div class="jumbotron">
+  <form class="form-signin" method="post" action="/users">
+    <h4 class="form-signin-heading">Please create your username and password:</h4><br>
+
+    <label class="sr-only" for="username_input">Username: </label>
+    <input class="form-control" id="username_input" name="user[username]" type="text" value="" placeholder="Enter new username" required autofocus><br>
+
+    <label class="sr-only" for="password_input">Password: </label>
+    <input class="form-control" id="password_input" name="user[password]" type="password" value="" placeholder="Enter new password" required><br>
+
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign up">
   </form>
 </div>

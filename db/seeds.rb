@@ -1,5 +1,5 @@
 corey = User.create!(username: "cgrad01", password: "password" )
-amy = User.create!(username: "loseramy", password: "password")
+amy = User.create!(username: "amyliao", password: "password")
 matt = User.create!(username: "coolmatt", password: "password")
 
 addition = Deck.create!(name: "addition")

@@ -1,21 +1,37 @@
-<div>
+<div class="jombotron">
+  <br>
   <h4><a href="/decks">Play a new game!</a></h4>
 </div>
-<div>
+<br>
+<div class="jombotron">
   <h4>Playing history for <%= @user.username %>:</h4>
 </div>
-
-
-<% @decks.each do |deck| %>
-<p>Deck Name : <%= deck.name.upcase %> </p>
-<p> Date Played - <%= deck.rounds.first.created_at.localtime.strftime("%B %-d, %Y") %></p>
-<p> There were <%= deck.cards.count %> cards in this deck.
-<p>You made a total of <%= deck.rounds.first.total_guesses %> guesses during the round. </p>
-
- <p> You answered <%= deck.rounds.first.incorrect_guesses %> wrong on the first try. </p>
- <p> **************************************************************</p>
-
-<% end %>
-
+<br><br>
+<div class="jombotron">
+  <% @decks.each do |deck| %>
+    <h4>Deck Name : <%= deck.name.upcase %> </h4>
+    <table class="table table-bordered">
+      <tr>
+        <th>Date Played</th>
+        <th>Cards in Deck</th>
+        <th>Total Guesses</th>
+        <th>First Guesses Correct</th>
+      </tr>
+      <tr>
+        <th><%= deck.rounds.first.created_at.localtime.strftime("%B %-d, %Y") %></th>
+        <th><%= deck.cards.count %></th>
+        <th><%= deck.rounds.last.total_guesses %></th>
+        <th><%= deck.rounds.last.first_try_correct %></th>
+      </tr>
+    </table>
+    <br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= deck.rounds.first.first_try_correct %>" aria-valuemin="0" aria-valuemax="<%= deck.rounds.first.total_guesses %>" style="width: <%= deck.rounds.first.first_try_correct / deck.rounds.first.total_guesses.to_f * 100 %>%;"><%= (deck.rounds.first.first_try_correct / deck.rounds.first.total_guesses.to_f * 100).round(1) %>%
+        <span class="sr-only"></span>
+      </div>
+    </div>
+    <br><br><br>
+  <% end %>
+</div>
 
 

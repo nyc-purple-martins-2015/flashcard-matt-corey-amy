@@ -1,2 +1,4 @@
-<p> Correct! The answer is <%= @card.answer %> </p>
-<a href="/card/<%= @round.cards_left.sample.card_id %>">Continue</a>
+<div class="jumbotron">
+  <h4> Correct! The answer is <%= @card.answer %> </h4><br>
+  <a class="btn btn-primary" href="/card/<%= @round.cards_left.sample.card_id %>">Continue</a>
+</div>

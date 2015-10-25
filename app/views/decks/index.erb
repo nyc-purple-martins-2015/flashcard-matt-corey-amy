@@ -1,10 +1,13 @@
-<div class="container">
-  <h2>Pick a deck!</h2>
+<div class="jumbotron">
+  <h3>Welcome! Please select a deck to play!</h3>
+  <br><br>
+  <div class="row">
     <ol>
       <% if @decks %>
-      <% @decks.each do |deck| %>
-        <li><a href="<%= "decks/#{deck.id}" %>"><%= deck.name %></a></li>
-      <%end%>
+        <% @decks.each do |deck| %>
+          <a class="btn btn-info" href="<%= "decks/#{deck.id}" %>"><%= deck.name %></a><br><br>
+        <%end%>
       <%end%>
     </ol>
+  </div>
 </div>

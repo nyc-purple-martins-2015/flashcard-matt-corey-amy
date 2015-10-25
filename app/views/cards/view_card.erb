@@ -1,25 +1,12 @@
-<div class="header">
+<div class="jumbotron">
+  <h4>Your question is:</h4><br>
+  <h3><%= @card.question %></h3><br>
 
-<h1> Flashcards </h1>
-
+  <form method="post" action="/card/<%=@card.id%>">
+    <input class="form-control" type= "text" name="answer" placeholder="Enter Answer Here"><br>
+    <input type= "submit" class="btn btn-primary" value="Submit Answer">
+  </form>
 </div>
-
-<div class="subheader">
-
-<h2> You are playing deck: <%=@deck.name%> </h2>
-
-</div>
-
-<p> Your question is: </p>
-
-<p> <%= @card.question %> </p>
-
-<p></p>
-
-<form method="post" action="/card/<%=@card.id%>">
-  <input type= "text" name="answer" placeholder="Enter Answer Here">
-  <input type= "submit" class="button" value="Submit Answer">
-</form>
 
 
 

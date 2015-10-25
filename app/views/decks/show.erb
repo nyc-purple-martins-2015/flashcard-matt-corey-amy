@@ -1,29 +1,12 @@
-<div class="header">
+<div class="jumbotron">
+  <h3>You selected the deck: <%= @deck.name.capitalize %></h3><br>
+  <h4> Are you ready to begin?</h4>
+  <br>
+  <a class="btn btn-sm btn-success" href="/card/<%=@cards.sample.id%>">YES!</a>
+  <br><br>
 
-<h1> Flashcards </h1>
-
+  <form method="link" action="/">
+    <input type= "submit" class="btn btn-sm btn-danger" value="Go Back">
+  </form>
 </div>
-
-<div class="subheader">
-
-
-
-</div>
-
-<p> You selected the deck: <%=@deck.name%> </p>
-
-<p> Are you ready to begin?</p>
-
-<p></p>
-
-
-<a href="/card/<%=@cards.sample.id%>">YES!</a>
-
-
-<p></p>
-
-<form method="link" action="/">
-  <input type= "submit" class="buttom" value="Go Back">
-</form>
-
 
