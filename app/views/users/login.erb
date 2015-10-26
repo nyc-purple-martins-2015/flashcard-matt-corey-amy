@@ -1,13 +1,14 @@
-<div class="jumbotron">
-  <% if @errors %>
-    <ul>
-    <% @errors.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
+<% if @errors %>
+  <div class="jumbotron">
+  <ul>
+  <% @errors.each do |message| %>
+    <li><%= message %></li>
   <% end %>
+  </ul>
+  </div>
+<% end %>
 
-
+<div class="jumbotron">
   <form class="form-signin" role="form" method="post" action="/login">
 
     <h4 class="form-signin-heading">Please enter your username and password:</h4><br>
