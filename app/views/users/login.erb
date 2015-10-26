@@ -1,23 +1,21 @@
-<% if @errors %>
-  <div>
-    <span>Please fix the following error(s):</span>
-        <ul>
-          <% @errors.each do |error| %>
-            <li><%= error %></li>
-          <% end %>
-        </ul>
-  </div>
-<% end %>
-
 <div class="jumbotron">
+  <% if @errors %>
+    <ul>
+    <% @errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+
   <form class="form-signin" role="form" method="post" action="/login">
 
     <h4 class="form-signin-heading">Please enter your username and password:</h4><br>
     <label class="sr-only" for="username_input">Username: </label>
-    <input class="form-control" id="username_input" name="user[username]" type="text" value="" placeholder="Enter your username"><br>
+    <input class="form-control" id="username_input" name="user[username]" type="text" value="" placeholder="Enter your username" required><br>
 
     <label class="sr-only" for="password_input">Password: </label>
-    <input class="form-control" id="password_input" name="user[password]" type="password" value="" placeholder="Enter your password"><br>
+    <input class="form-control" id="password_input" name="user[password]" type="password" value="" placeholder="Enter your password" required><br>
 
     <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log in">
   </form>
