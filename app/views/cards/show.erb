@@ -1,9 +1,26 @@
-<div>
-  <h5>You've completed a round of <%= @round.deck.name %>, which has <%= @round.deck.cards.count %> cards.</h5>
-  <h5>You made a total of <%= @round.total_guesses %> guesses.</h5>
-  <h5>You answered <%= @round.incorrect_guesses %> wrong the first time.</h5>
-</div>
+<div class="jumbotron">
+  <table class="table table-bordered">
+    <tr>
+      <th>Deck name</th>
+      <th>Cards in Deck</th>
+      <th>Total Guesses</th>
+      <th>First Guesses Correct</th>
+    </tr>
+    <tr>
+      <th><%= @round.deck.name.capitalize %></th>
+      <th><%= @round.deck.cards.count %></th>
+      <th><%= @round.total_guesses %></th>
+      <th><%= @round.first_try_correct %></th>
+    </tr>
+  </table>
+  <br>
+  <div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @round.first_try_correct %>" aria-valuemin="0" aria-valuemax="<%= @round.total_guesses %>" style="width: <%= @round.first_try_correct / @round.total_guesses.to_f * 100 %>%;"><%= (@round.first_try_correct / @round.total_guesses.to_f * 100).round(1) %>%
+      <span class="sr-only"></span>
+    </div>
+  </div>
 
-<div>
-  <h5><a href="/decks">Play another game!</a></h5>
+  <div>
+    <h4><a href="/decks">Play another game!</a></h4>
+  </div>
 </div>

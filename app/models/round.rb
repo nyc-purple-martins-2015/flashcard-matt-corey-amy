@@ -20,12 +20,11 @@ class Round < ActiveRecord::Base
     self.guesses.update_all(correctness: "false", count: 0)
   end
 
-  def incorrect_guesses
-    self.guesses.all.where('count >?', 1).count
+  def first_try_correct
+    self.guesses.where(count: 1).count
   end
 
   def total_guesses
     self.guesses.sum(:count)
   end
-
 end
